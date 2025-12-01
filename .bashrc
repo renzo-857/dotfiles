@@ -116,16 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# custom configs
-export PATH="$HOME/.local/bin:$PATH"
-
 # custom aliases
 alias c='clear'
 alias q='exit'
 alias uupdate='sudo apt-get update -y'
 alias uupgrade='sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo snap refresh && sudo flatpak update'
-alias uclean='sudo apt-get autoremove -y && sudo apt-get autoclean -y && dpkg -l | grep "^rc" | awk "{print \$2}" | xargs sudo apt-get purge -y'
-alias uscan='sudo dpkg --configure -a && sudo apt-get -y install -f && sudo systemctl list-units --state=failed && sudo debsums -s'
+alias uclean='sudo dpkg --configure -a && sudo apt-get -y install -f && sudo apt-get autoremove -y && sudo apt-get autoclean -y && dpkg -l | grep "^rc" | awk "{print \$2}" | xargs sudo apt-get purge -y'
+alias uscan='systemctl list-units --state=failed && sudo debsums -s'
 alias urelupdate='lsb_release -a && do-release-upgrade -c'
 alias urelupgrade='sudo do-release-upgrade'
 alias sleep='systemctl suspend'
