@@ -116,10 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# cutom prompt
+PS1='\[\e[92;1m\]\u\[\e[0m\] \[\e[2m\]@\[\e[0m\] \[\e[92;1m\]\h\[\e[0m\] \[\e[2m\]|\[\e[0m\] \[\e[92;1m\]\d\[\e[0m\] \[\e[92;1m\]\t\[\e[0m\] \[\e[2m\]|\[\e[0m\] \[\e[92;1m\]\w\n\[\e[0;2m\]\$\[\e[0m\] '
+
 # custom aliases
 alias c='clear'
 alias q='exit'
-alias uupdate='sudo apt-get update -y'
+alias uupdate='sudo apt-get update -y && apt list --upgradable'
 alias uupgrade='sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo snap refresh && sudo flatpak update'
 alias uclean='sudo dpkg --configure -a && sudo apt-get -y install -f && sudo apt-get autoremove -y && sudo apt-get autoclean -y && dpkg -l | grep "^rc" | awk "{print \$2}" | xargs sudo apt-get purge -y'
 alias uscan='systemctl list-units --state=failed && sudo debsums -s'
@@ -127,3 +130,5 @@ alias urelupdate='lsb_release -a && do-release-upgrade -c'
 alias urelupgrade='sudo do-release-upgrade'
 alias sleep='systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
+alias pyvenv='source ~/.venv/bin/activate'
+alias ping1='ping -c 4 1.1.1.1'
