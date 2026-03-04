@@ -1,0 +1,8 @@
+TimeFormat="%H:%M"
+TaskBarShowCPUStatus=0
+TaskBarShowMEMStatus=0
+TaskBarShowNetStatus=0
+TaskBarShowStartMenu=0
+TaskBarShowWindowListMenu=0
+QuickSwitchRaiseCandidate=1
+ShowMoveSizeStatus=0 # 0/1
