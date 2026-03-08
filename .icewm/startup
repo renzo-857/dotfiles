@@ -1,5 +1,0 @@
-#!/bin/sh
-sleep 1 && xset s 900 &
-sleep 1 && nitrogen --restore &
-sleep 1 && imwheel -d &
-sleep 1 && compton -b --backend glx &
