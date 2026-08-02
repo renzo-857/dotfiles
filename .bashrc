@@ -116,11 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# environment variables
+export PATH="$PATH:/home/renzo/.local/bin"
+export EDITOR="micro"
+export VISUAL="micro"
+export PAGER="less"
+
 # custom prompt
 PS1='\[\e[92;1m\]\u\[\e[0m\] \[\e[2m\]@\[\e[0m\] \[\e[92;1m\]\h\[\e[0m\] \[\e[2m\]|\[\e[0m\] \[\e[92;1m\]\d\[\e[0m\] \[\e[92;1m\]\t\[\e[0m\] \[\e[2m\]|\[\e[0m\] \[\e[92;1m\]\w\n\[\e[0;2m\]\$\[\e[0m\] '
-
-# local path
-export PATH="$PATH:/home/renzo/.local/bin"
 
 # custom aliases
 alias c='clear'
