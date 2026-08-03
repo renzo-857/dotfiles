@@ -138,3 +138,35 @@ alias urelupgrade='sudo do-release-upgrade'
 alias sleep='sudo systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
 alias uwslq='wsl.exe --shutdown'
+
+# >>> comfort-shell >>>
+export PATH="$HOME/bin:$PATH"
+
+# Load Homebrew (idempotent; covers non-login shells).
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [ -x "$HOME/.linuxbrew/bin/brew" ]; then
+  eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+fi
+# Prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+
+fi
+# Integrations
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
+
+# Modern aliases
+command -v eza >/dev/null 2>&1 && alias ls="eza --icons" && alias ll="eza -la --icons --git" && alias lt="eza --tree"
+command -v bat >/dev/null 2>&1 && alias cat="bat"
+command -v rg >/dev/null 2>&1 && alias grep="rg"
+command -v fd >/dev/null 2>&1 && alias find="fd"
+
+# Git shortcuts
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+
+# <<< comfort-shell <<<
