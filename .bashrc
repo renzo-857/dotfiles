@@ -122,6 +122,7 @@ if ! shopt -oq posix; then
 fi
 
 # environment variables
+export TERM="tmux-256color"
 export PATH="$PATH:/home/renzo/.local/bin"
 export TERM="tmux-256color"
 export EDITOR="micro"
@@ -146,6 +147,7 @@ alias uscan='sudo debsums -s'
 alias urelupgrade='sudo do-release-upgrade'
 alias sleep='sudo systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
+<<<<<<< HEAD
 
 # wsl aliases
 alias uwslq="wsl.exe --shutdown"
@@ -155,6 +157,8 @@ alias udockerq="docker stop $(docker ps -q)"
 
 # frappe env
 export ERPNEXT_VERSION="version-16"
+=======
+>>>>>>> 52290194e62954374d8c01e48687feed1e7a155c
 
 # >>> comfort-shell >>>
 export PATH="$HOME/bin:$PATH"
