@@ -151,6 +151,8 @@ alias deepsleep='sudo systemctl hibernate'
 alias uwslq="wsl.exe --shutdown"
 
 # docker aliases
+alias udocker="docker ps"
+alias udockeri='docker images'
 alias udockerq="docker stop $(docker ps -q)"
 
 # frappe env
