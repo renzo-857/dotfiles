@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# start inside tmux
+if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -118,6 +123,7 @@ fi
 
 # environment variables
 export PATH="$PATH:/home/renzo/.local/bin"
+export TERM="tmux-256color"
 export EDITOR="micro"
 export VISUAL="micro"
 export PAGER="less"
@@ -129,6 +135,9 @@ PS1='\[\e[92;1m\]\u\[\e[0m\] \[\e[2m\]@\[\e[0m\] \[\e[92;1m\]\h\[\e[0m\] \[\e[2m
 alias c='clear'
 alias q='exit'
 alias rt='gio trash'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../../'
 alias uupdate='sudo apt-get update && apt-get upgrade --simulate'
 alias uupgrade='sudo bash -c "apt-get update && apt-get dist-upgrade -y && snap refresh && flatpak update" && pipx upgrade-all'
 alias uclean='sudo bash -c "apt-get autoremove && apt-get autoclean && aptitude purge ~c"'
@@ -137,11 +146,18 @@ alias uscan='sudo debsums -s'
 alias urelupgrade='sudo do-release-upgrade'
 alias sleep='sudo systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
-alias uwslq='wsl.exe --shutdown'
+
+# wsl aliases
+alias uwslq="wsl.exe --shutdown"
+
+# docker aliases
+alias udockerq="docker stop $(docker ps -q)"
+
+# frappe env
+export ERPNEXT_VERSION="version-16"
 
 # >>> comfort-shell >>>
 export PATH="$HOME/bin:$PATH"
-
 # Load Homebrew (idempotent; covers non-login shells).
 if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -151,22 +167,23 @@ fi
 # Prompt
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
-
 fi
 # Integrations
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
-
 # Modern aliases
 command -v eza >/dev/null 2>&1 && alias ls="eza --icons" && alias ll="eza -la --icons --git" && alias lt="eza --tree"
 command -v bat >/dev/null 2>&1 && alias cat="bat"
 command -v rg >/dev/null 2>&1 && alias grep="rg"
 command -v fd >/dev/null 2>&1 && alias find="fd"
-
 # Git shortcuts
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
-
 # <<< comfort-shell <<<
+
+# nvm env
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
