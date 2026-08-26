@@ -1,0 +1,14 @@
+set nowrap
+set mouse
+set tabsize 4
+set positionlog
+set atblanks
+set autoindent
+set linenumbers
+set indicator
+set trimblanks
+set zap
+set stateflags
+set historylog
+set emptyline
+set quickblank

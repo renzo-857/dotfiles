@@ -8,9 +8,9 @@ case $- in
       *) return;;
 esac
 
-# start inside tmux
-if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
-    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+# tmux env
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -93,9 +93,8 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -al'
+alias la='ls -a'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -124,8 +123,8 @@ fi
 # environment variables
 export PATH="$PATH:/home/renzo/.local/bin"
 export TERM="tmux-256color"
-export EDITOR="micro"
-export VISUAL="micro"
+export EDITOR="nano"
+export VISUAL="nano"
 export PAGER="less"
 
 # custom prompt
@@ -138,6 +137,7 @@ alias rt='gio trash'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
+alias uping='ping -c 4 1.1.1.1'
 alias uupdate='sudo apt-get update && apt-get upgrade --simulate'
 alias uupgrade='sudo bash -c "apt-get update && apt-get dist-upgrade -y && snap refresh && flatpak update" && pipx upgrade-all'
 alias uclean='sudo bash -c "apt-get autoremove && apt-get autoclean && aptitude purge ~c"'
@@ -147,13 +147,12 @@ alias urelupgrade='sudo do-release-upgrade'
 alias sleep='sudo systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
 
+# tmux aliases
+
 # wsl aliases
-alias uwslq="wsl.exe --shutdown"
+alias wslq='wsl.exe --shutdown'
 
 # docker aliases
-alias udocker="docker ps"
-alias udockeri='docker images'
-alias udockerq="docker stop $(docker ps -q)"
 
 # frappe env
 export ERPNEXT_VERSION="version-16"
