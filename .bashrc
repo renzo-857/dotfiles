@@ -95,6 +95,7 @@ fi
 # some more ls aliases
 alias ll='ls -al'
 alias la='ls -a'
+alias l='ls -l'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -137,6 +138,7 @@ alias rt='gio trash'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
+alias utop='sudo atop 5'
 alias uping='ping -c 4 1.1.1.1'
 alias uupdate='sudo apt-get update && apt-get upgrade --simulate'
 alias uupgrade='sudo bash -c "apt-get update && apt-get dist-upgrade -y && snap refresh && flatpak update" && pipx upgrade-all'
