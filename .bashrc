@@ -152,9 +152,11 @@ alias deepsleep='sudo systemctl hibernate'
 # tmux aliases
 
 # wsl aliases
-alias wslq='wsl.exe --shutdown'
+alias uwslq='wsl.exe --shutdown'
 
 # docker aliases
+alias udockeri='docker images'
+alias udockerq='docker stop $(docker ps -q)'
 
 # frappe env
 export ERPNEXT_VERSION="version-16"
