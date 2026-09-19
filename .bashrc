@@ -146,7 +146,7 @@ alias uclean='sudo bash -c "apt-get autoremove && apt-get autoclean && aptitude 
 alias ufix='sudo bash -c "dpkg --configure -a && apt-get install -f"'
 alias uscan='sudo debsums -s'
 alias urelupgrade='sudo do-release-upgrade'
-alias sleep='sudo systemctl suspend'
+alias sleep='systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
 
 # tmux aliases
