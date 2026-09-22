@@ -138,8 +138,6 @@ alias rt='gio trash'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias utop='sudo atop 5'
-alias uping='ping -c 4 1.1.1.1'
 alias uupdate='sudo apt-get update && apt-get upgrade --simulate'
 alias uupgrade='sudo bash -c "apt-get update && apt-get dist-upgrade -y && snap refresh && flatpak update" && pipx upgrade-all'
 alias uclean='sudo bash -c "apt-get autoremove && apt-get autoclean && aptitude purge ~c"'
@@ -152,11 +150,11 @@ alias deepsleep='sudo systemctl hibernate'
 # tmux aliases
 
 # wsl aliases
-alias uwslq='wsl.exe --shutdown'
+alias wslq='wsl.exe --shutdown'
 
 # docker aliases
-alias udockeri='docker images'
-alias udockerq='docker stop $(docker ps -q)'
+alias dockeri='docker images'
+alias dockerq='docker stop $(docker ps -q)'
 
 # frappe env
 export ERPNEXT_VERSION="version-16"
