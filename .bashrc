@@ -154,6 +154,8 @@ alias wslq='wsl.exe --shutdown'
 
 # docker aliases
 alias dockeri='docker images'
+alias dockerp='docker ps'
+alias dockers='docker start $(docker ps -aq)'
 alias dockerq='docker stop $(docker ps -q)'
 
 # frappe env
