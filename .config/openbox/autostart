@@ -1,0 +1,6 @@
+sleep 1 && xrdb -merge ~/.Xresources &
+sleep 1 && xset s 900 &
+sleep 1 && imwheel -k -b "4 5" -d &
+sleep 1 && nitrogen --restore &
+sleep 1 && xinput --set-prop pointer:"MSI VERSA 300 WIRELESS Mouse" "libinput Accel Profile Enabled" 0 1 0 &
+sleep 1 && xinput --set-prop pointer:"Micro-Star INT'L CO., LTD. MSI VERSA 300 WIRELESS Gaming Mouse" "libinput Accel Profile Enabled" 0 1 0 &
