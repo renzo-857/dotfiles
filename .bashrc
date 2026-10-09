@@ -9,8 +9,14 @@ case $- in
 esac
 
 # tmux env
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+if command -v tmux &> /dev/null \
+  && [[ $- == *i* ]] \
+  && [ -t 0 ] && [ -t 1 ] \
+  && [[ ! "$TERM" =~ screen ]] \
+  && [[ ! "$TERM" =~ tmux ]] \
+  && [ -z "$TMUX" ] \
+  && [ -z "$NO_TMUX" ]; then
+  exec tmux && exit
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
