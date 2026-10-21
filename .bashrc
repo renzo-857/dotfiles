@@ -127,6 +127,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# disable freeze
+stty -ixon
+
 # environment variables
 export PATH="$PATH:/home/renzo/.local/bin"
 export TERM="tmux-256color"
@@ -145,7 +148,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias uping='ping -c 4 1.1.1.1'
-alias utop='sudo atop 5'
 alias uupdate='sudo apt-get update && apt-get upgrade --simulate'
 alias uupgrade='sudo bash -c "apt-get update && apt-get dist-upgrade -y && snap refresh && flatpak update" && pipx upgrade-all'
 alias uclean='sudo bash -c "apt-get autoremove && apt-get autoclean && aptitude purge ~c"'
@@ -154,8 +156,6 @@ alias uscan='sudo debsums -s'
 alias urelupgrade='sudo do-release-upgrade'
 alias sleep='systemctl suspend'
 alias deepsleep='sudo systemctl hibernate'
-
-# tmux aliases
 
 # wsl aliases
 alias wslq='wsl.exe --shutdown'
